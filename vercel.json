@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "buildCommand": "cd frontend && npm run build",
+  "outputDirectory": "frontend/dist",
+  "public": "frontend/public",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/[...].ts"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
